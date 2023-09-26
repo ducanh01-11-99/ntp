@@ -1,0 +1,7 @@
+{
+  "hello": "Xin chào, {{name}}!",
+  "Account": "Account",
+  "Password": "Password",
+  "ChangePass": "Change Passwrod",
+  "Logout": "Logout"
+}

@@ -1,0 +1,8 @@
+{
+  "hello": "Xin chào, {{name}}!",
+  "Account": "Tài khoản",
+  "Password": "Mật khẩu",
+  "Login": "Đăng nhập",
+  "ChangePass": "Đổi mật khẩu",
+  "Logout": "Đăng xuất"
+}

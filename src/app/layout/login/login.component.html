@@ -1,0 +1,43 @@
+<div class="loginbody">
+  <div class="panel">
+    <img alt="" src="../../assets/avatar.png" height=200 width=300>
+  </div>
+  <div class="loginContainer">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ "Account" | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorUser">
+          <input nz-input formControlName="email" id="email" />
+          <ng-template #errorUser let-control>
+            <ng-container *ngIf="control.hasError('required')">Tên đăng nhập không được để trống</ng-container>
+            <ng-container *ngIf="control.hasError('userNameTooShort')">
+              Tên đăng nhập không hợp lệ
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>{{ "Password" | translate }}</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorPass">
+          <input
+            nz-input
+            type="password"
+            id="password"
+            formControlName="password"
+          />
+          <ng-template #errorPass let-control>
+            <ng-container *ngIf="control.hasError('required')">Mật khẩu không được để trống</ng-container>
+            <ng-container *ngIf="control.hasError('passTooShort')">
+              Mật khẩu không hợp lệ
+            </ng-container>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item nz-row class="register-area">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+          <button nz-button nzType="primary">{{ "Login" | translate }}</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </div>
+</div>

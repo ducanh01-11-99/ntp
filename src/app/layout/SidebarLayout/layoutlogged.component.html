@@ -1,0 +1,54 @@
+<nz-layout class="layoutCustom">
+  <nz-sider (mouseenter)="onHover()" (mouseleave)="onMouseMove()" nzWidth="300px"  class="sider" style="background-color: #12132D " nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+    <div class="logo">
+    </div>
+    <ul nz-menu nzMode="inline" (nzClick)="onSidebarItemClick">
+      <li nz-submenu nzTitle="Dấu hiệu nhận diện" nzIcon="user" >
+        <ul>
+          <li nz-menu-item routerLink="dau-hieu-nhan-dang" routerLinkActive="active">
+            <a>
+              <span>Quản lý DHND</span>
+            </a>
+          </li>
+          <li nz-menu-item routerLink="quan-ly-phien-ban">Quản lý phiên bản</li>
+          <li nz-menu-item routerLink="quan-ly-nguon-cap">Thiết lập nguồn cấp </li>
+        </ul>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header class="headerContent" style="background-color: white">
+      <div>
+        <nz-select
+          [(ngModel)]="selectedValue"
+          (ngModelChange)="log($event)"
+          nzAllowClear="false"
+          nzPlaceHolder="Choose"
+        >
+          <nz-option *ngFor="let option of optionList" [nzValue]="option" [nzLabel]="option.label"></nz-option>
+        </nz-select>
+      </div>
+      <nz-avatar [nzSize]="32" nzIcon="user" nzPopoverPlacement="bottom"
+                 class="avatar"
+                 nz-popover
+                 [(nzPopoverVisible)]="visible"
+                 (nzPopoverVisibleChange)="change($event)"
+                 nzPopoverTrigger="click"
+                 [nzPopoverContent]="contentTemplate">
+
+      </nz-avatar>
+      <ng-template #contentTemplate>
+        <div>
+          <div>{{"ChangePass" | translate}}</div>
+          <div>{{"Logout" | translate}}</div>
+        </div>
+      </ng-template>
+
+    </nz-header>
+    <nz-content class="container">
+          <router-outlet [routerLink]="currentRoute"></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
+
+

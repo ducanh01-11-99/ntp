@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.rootPage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+nz-demo-layout-custom-trigger {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,65 @@
+
+    <nz-content class="container">
+      <div style="display: flex">
+        <button style="width: 146px" class="common-attribute-component common-button" nz-button nzType="primary" nz-popover
+                [(nzPopoverVisible)]="visible"
+                (nzPopoverVisibleChange)="change($event)"
+                nzPopoverTrigger="click"
+                nzPopoverPlacement="bottom"
+                [nzPopoverContent]="contentTemplate"
+
+        >Tác vụ</button>
+        <ng-template #contentTemplate>
+          <div style="border-radius: 8px">
+            <div (click)="clickMe(data.type)" class="listItem" *ngFor="let data of listItem">{{data.text}}</div>
+          </div>
+        </ng-template>
+        <input style="margin-left: 15px; margin-right: 15px" class="common-attribute-component" nz-input placeholder="Nhập từ khóa tìm kiếm" ngModel="'1'" type="number" />
+        <button  style="width: 155px; margin-right: 15px" class="common-attribute-component common-button" nz-button nzType="primary">Thêm mới</button>
+        <button  style="width: 197px" class="common-attribute-component common-button" nz-button nzType="primary">Thêm bằng tệp</button>
+      </div>
+      <nz-table
+        #rowSelectionTable
+        nzShowPagination
+        nzShowSizeChanger
+        [nzTotal]="total"
+        [nzData]="listOfData"
+        (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+      >
+        <thead>
+        <tr>
+          <th
+            [(nzChecked)]="checked"
+            [nzIndeterminate]="indeterminate"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th>ID</th>
+          <th>SID:rev</th>
+          <th>Thông điệp</th>
+          <th>Nguồn tạo</th>
+          <th>Phân loại</th>
+          <th>Trạng thái</th>
+          <th>Tags</th>
+          <th>Chức năng</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of rowSelectionTable.data">
+          <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+          <td>{{data.id}}</td>
+          <td>{{ data.sid }}</td>
+          <td>{{ data.msg }}</td>
+          <td>{{ data.create_by }}</td>
+          <td>{{data.category}}</td>
+          <td>{{data.status}}</td>
+          <td>{{data.tags}}</td>
+          <td>
+            <a nz-tooltip nzTooltipTitle="Sửa DHND đã chọn" nzTooltipPlacement="top">a</a>
+            <a nz-tooltip nzTooltipTitle="Xóa DHND đã chọn" nzTooltipPlacement="top">a</a>
+            <a nz-tooltip nzTooltipTitle="Xem lịch sử" nzTooltipPlacement="top">a</a>
+          </td>
+        </tr>
+        </tbody>
+      </nz-table>
+    </nz-content>
+
